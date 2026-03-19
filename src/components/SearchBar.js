@@ -27,11 +27,11 @@ const SearchBar = ({ setFilteredRestaurants, restaurants }) => {
 
   return (
     <div id='search-container' className='p-1 flex items-center justify-end gap-2'>
-      <div className='flex flex-1 items-center gap-2 border-2 border-orange-400 p-1 rounded-xl'>
+      <div className='flex flex-1 items-center gap-2 border-2 border-primary p-1 rounded-xl'>
         <input
           type='text'
           placeholder='Search for Restaurants...'
-          className='flex-1 p-0.5 px-2 focus:outline-none focus:ring-0'
+          className='flex-1 p-0.5 px-2 focus:outline-none focus:ring-0 bg-base-100'
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -40,7 +40,7 @@ const SearchBar = ({ setFilteredRestaurants, restaurants }) => {
         </button>
       </div>
       <div>
-        <div className='flex items-center gap-3 rounded-lg px-3 py-1 bg-white shadow-sm'>
+        <div className='flex items-center gap-3 rounded-lg px-3 py-1 bg-base-100 shadow-sm'>
           <span
             className='cursor-pointer'
             onClick={() => {
@@ -52,7 +52,7 @@ const SearchBar = ({ setFilteredRestaurants, restaurants }) => {
           >
             <svg
               xmlns='http://www.w3.org/2000/svg'
-              className='w-5 h-5 text-orange-500 shrink-0'
+              className='w-5 h-5 text-primary shrink-0'
               viewBox='0 0 24 24'
               fill='currentColor'
               aria-hidden='true'
@@ -62,10 +62,14 @@ const SearchBar = ({ setFilteredRestaurants, restaurants }) => {
           </span>
 
           <div className='flex flex-col min-w-0'>
-            <span className='text-sm font-medium truncate max-w-xs' title={location} aria-live='polite'>
+            <span
+              className='text-sm font-medium truncate max-w-xs text-base-content'
+              title={location}
+              aria-live='polite'
+            >
               {location}
             </span>
-            <span className='text-xs text-gray-500'>Deliver to</span>
+            <span className='text-xs text-base-content/50'>Deliver to</span>
           </div>
         </div>
       </div>
