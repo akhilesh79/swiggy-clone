@@ -21,16 +21,18 @@ const Body = () => {
     setFilteredRestaurants(restaurantData);
   };
 
+  console.log(restaurants);
+
   return (
     <>
       <SearchBar setFilteredRestaurants={setFilteredRestaurants} restaurants={restaurants} />
       {/* Restaurants */}
       <div className='px-2'>
-        <div className='text-2xl font-bold mb-4 font-sans flex items-center justify-between gap-2 py-2'>
+        <div className='text-2xl font-bold mb-4 font-sans flex items-center justify-between gap-2 py-2 text-base-content'>
           <div>Restaurants</div>
           {/* filter of top rated restaurants - star icon */}
           <div
-            className='text-sm text-gray-500 flex items-center gap-1 cursor-pointer'
+            className='text-sm text-base-content/50 flex items-center gap-1 cursor-pointer'
             onClick={() => {
               setShowTopRated(!showTopRated);
               if (showTopRated) {

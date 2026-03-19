@@ -2,11 +2,13 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { cartI, foodI } from '../assets/index.js';
 import useOnlineStatus from '../hooks/useOnlineStatus.js';
+import { useTheme } from '../contexts/ThemeContext.js';
 
 const Header = () => {
   const isOnline = useOnlineStatus();
   const [showBackOnline, setShowBackOnline] = useState(false);
   const hasBeenOffline = useRef(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     let timeout;
@@ -59,6 +61,9 @@ const Header = () => {
           </div>
         </div>
         <div className='flex gap-2 items-center'>
+          <button onClick={toggleTheme} className='btn btn-ghost btn-circle'>
+            {theme === 'light' ? '🌙' : '☀️'}
+          </button>
           <div className='list'>
             <ul className='menu menu-horizontal px-1'>
               <li>
