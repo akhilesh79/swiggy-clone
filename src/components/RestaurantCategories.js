@@ -40,7 +40,14 @@ const RestaurantCategories = ({ category, showAllItems, setShowCategoryIndex }) 
                   <img src={`${CDN_ITEM}/${item.imageId}`} alt={item.name} className='w-full h-full object-cover' />
                 </div>
               ) : null}
-              <button onClick={() => addItem(item)} className='btn btn-sm btn-outline self-start md:self-center'>
+              <button
+                onClick={() => addItem(item)}
+                className={
+                  items.some((i) => i.id === item.id)
+                    ? 'btn btn-sm btn-success self-start md:self-center'
+                    : 'btn btn-sm btn-outline self-start md:self-center'
+                }
+              >
                 {items.some((i) => i.id === item.id) ? 'ADDED' : 'ADD'}
               </button>
             </div>
