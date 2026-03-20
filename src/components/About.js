@@ -57,7 +57,7 @@ class About extends Component {
               <div className='mt-8 pt-6 border-t border-gray-200'>
                 <h3 className='font-semibold text-gray-800 mb-3'>Get in Touch</h3>
                 <div className='space-y-2 text-sm text-gray-600'>
-                  <p>📧 akhilesh79@example.com</p>
+                  <p>📧 makmishra.99@gmail.com</p>
                   <p>💼 Full Stack Developer</p>
                   <p>🌟 Passionate about creating amazing web experiences</p>
                 </div>
