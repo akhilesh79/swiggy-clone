@@ -24,7 +24,7 @@ const Body = () => {
   console.log(restaurants);
 
   return (
-    <>
+    <div>
       <SearchBar setFilteredRestaurants={setFilteredRestaurants} restaurants={restaurants} />
       {/* Restaurants */}
       <div className='px-2'>
@@ -68,7 +68,7 @@ const Body = () => {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

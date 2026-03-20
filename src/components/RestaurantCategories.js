@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { CDN_ITEM } from '../constants/common';
-import { useCart } from '../contexts/CartContext';
+import { addItem } from '../store/slices/cartSlice';
 
 const formatPrice = (priceInPaise) => {
   if (priceInPaise == null) return '';
@@ -8,7 +8,8 @@ const formatPrice = (priceInPaise) => {
 };
 
 const RestaurantCategories = ({ category, showAllItems, setShowCategoryIndex }) => {
-  const { addItem, items } = useCart();
+  const dispatch = useDispatch();
+  const { items } = useSelector((store) => store.cart);
   return (
     <div className=' border border-base-300 bg-base-100 shadow-sm'>
       <div
@@ -41,7 +42,7 @@ const RestaurantCategories = ({ category, showAllItems, setShowCategoryIndex }) 
                 </div>
               ) : null}
               <button
-                onClick={() => addItem(item)}
+                onClick={() => dispatch(addItem(item))}
                 className={
                   items.some((i) => i.id === item.id)
                     ? 'btn btn-sm btn-success self-start md:self-center'

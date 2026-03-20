@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import { cartI, foodI } from '../assets/index.js';
 import useOnlineStatus from '../hooks/useOnlineStatus.js';
 import { useTheme } from '../contexts/ThemeContext.js';
-import { useCart } from '../contexts/CartContext.js';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
   const isOnline = useOnlineStatus();
   const [showBackOnline, setShowBackOnline] = useState(false);
   const hasBeenOffline = useRef(false);
   const { theme, toggleTheme } = useTheme();
-  const { totalItems } = useCart();
+  const { totalItems } = useSelector((store) => store.cart);
 
   useEffect(() => {
     let timeout;

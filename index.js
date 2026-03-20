@@ -3,13 +3,14 @@ import './index.css';
 import { RouterProvider } from 'react-router-dom';
 import router from './src/routes';
 import { ThemeProvider } from './src/contexts/ThemeContext';
-import { CartProvider } from './src/contexts/CartContext';
+import { Provider } from 'react-redux';
+import store from './src/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ThemeProvider>
-    <CartProvider>
+    <Provider store={store}>
       <RouterProvider router={router} />
-    </CartProvider>
+    </Provider>
   </ThemeProvider>,
 );
