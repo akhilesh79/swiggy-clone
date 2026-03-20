@@ -49,7 +49,7 @@ class ContactUs extends Component {
                     </div>
                     <div>
                       <p className='font-semibold'>Email</p>
-                      <p className='text-base-200'>akhilesh79@example.com</p>
+                      <p className='text-base-200'>makmishra.99@gmail.com</p>
                     </div>
                   </div>
 
@@ -59,17 +59,7 @@ class ContactUs extends Component {
                     </div>
                     <div>
                       <p className='font-semibold'>Phone</p>
-                      <p className='text-base-200'>+1 (555) 123-4567</p>
-                    </div>
-                  </div>
-
-                  <div className='flex items-center space-x-4'>
-                    <div className='w-12 h-12 bg-base-100/20 rounded-full flex items-center justify-center'>
-                      <span className='text-xl'>📍</span>
-                    </div>
-                    <div>
-                      <p className='font-semibold'>Location</p>
-                      <p className='text-base-200'>Remote / Worldwide</p>
+                      <p className='text-base-200'>+91 8765120746</p>
                     </div>
                   </div>
 
