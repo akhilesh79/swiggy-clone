@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { CDN_ITEM } from '../constants/common';
+import { useCart } from '../contexts/CartContext';
 
 const formatPrice = (priceInPaise) => {
   if (priceInPaise == null) return '';
@@ -7,6 +8,7 @@ const formatPrice = (priceInPaise) => {
 };
 
 const RestaurantCategories = ({ category, showAllItems, setShowCategoryIndex }) => {
+  const { addItem, items } = useCart();
   return (
     <div className=' border border-base-300 bg-base-100 shadow-sm'>
       <div
@@ -38,7 +40,9 @@ const RestaurantCategories = ({ category, showAllItems, setShowCategoryIndex }) 
                   <img src={`${CDN_ITEM}/${item.imageId}`} alt={item.name} className='w-full h-full object-cover' />
                 </div>
               ) : null}
-              <button className='btn btn-sm btn-outline self-start md:self-center'>ADD</button>
+              <button onClick={() => addItem(item)} className='btn btn-sm btn-outline self-start md:self-center'>
+                {items.some((i) => i.id === item.id) ? 'ADDED' : 'ADD'}
+              </button>
             </div>
           ))}
         </div>
