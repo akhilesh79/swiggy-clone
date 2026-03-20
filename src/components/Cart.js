@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { useCart } from '../contexts/CartContext';
 import { CDN_ITEM } from '../constants/common';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearCart, removeItem, updateQuantity } from '../store/slices/cartSlice';
 
 const formatPrice = (priceInPaise) => {
   if (priceInPaise == null) return '₹0';
@@ -8,7 +9,8 @@ const formatPrice = (priceInPaise) => {
 };
 
 const Cart = () => {
-  const { items, totalItems, totalPrice, removeItem, updateQuantity, clearCart } = useCart();
+  const { items, totalItems, totalPrice } = useSelector((store) => store.cart);
+  const dispatch = useDispatch();
 
   if (items.length === 0) {
     return (
@@ -69,14 +71,14 @@ const Cart = () => {
                     <div className='flex items-center gap-4 justify-between md:justify-end md:flex-col md:gap-2'>
                       <div className='flex items-center gap-2 bg-base-200 rounded-lg p-1'>
                         <button
-                          onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                          onClick={() => dispatch(updateQuantity({ id: item.id, quantity: item.quantity - 1 }))}
                           className='btn btn-xs btn-ghost'
                         >
                           −
                         </button>
                         <span className='w-8 text-center font-semibold text-base-content'>{item.quantity}</span>
                         <button
-                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                          onClick={() => dispatch(updateQuantity({ id: item.id, quantity: item.quantity + 1 }))}
                           className='btn btn-xs btn-ghost'
                         >
                           +
@@ -89,7 +91,7 @@ const Cart = () => {
                         </div>
                       </div>
                       <button
-                        onClick={() => removeItem(item.id)}
+                        onClick={() => dispatch(removeItem(item.id))}
                         className='btn btn-xs btn-ghost btn-outline text-error hover:bg-error/10'
                       >
                         Remove
@@ -131,7 +133,7 @@ const Cart = () => {
               <button
                 onClick={() => {
                   if (window.confirm('Are you sure you want to clear the cart?')) {
-                    clearCart();
+                    dispatch(clearCart());
                   }
                 }}
                 className='btn btn-ghost btn-sm w-full'

@@ -14,7 +14,12 @@ class About extends Component {
                   alt='akhilesh79 avatar'
                   className='w-36 h-36 mx-auto rounded-full object-cover border-4 border-base-300 shadow-lg'
                 />
-                <h2 className='mt-5 text-3xl font-bold text-base-100'>akhilesh79</h2>
+                <h2 className='mt-5 text-3xl font-bold text-base-100'>
+                  {/* github icon */}
+                  <a href='https://github.com/akhilesh79' target='_blank' rel='noopener noreferrer'>
+                    akhilesh79
+                  </a>
+                </h2>
                 <p className='mt-2 text-base md:text-lg text-base-200'>Full Stack Web Developer</p>
                 <p className='px-6 mt-4 text-sm text-base-200'>
                   Building scalable, user-centric web applications with clean architecture and modern UI principles.
