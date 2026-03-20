@@ -4,6 +4,7 @@ import Body from '../components/Body';
 import RestaurantMenu from '../components/RestaurantMenu';
 import About from '../components/About';
 import ContactUs from '../components/ContactUs';
+import Cart from '../components/Cart';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: '/contact',
         element: <ContactUs />,
+      },
+      {
+        path: '/cart',
+        element: <Cart />,
       },
     ],
   },

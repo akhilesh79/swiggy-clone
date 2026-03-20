@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import { cartI, foodI } from '../assets/index.js';
 import useOnlineStatus from '../hooks/useOnlineStatus.js';
 import { useTheme } from '../contexts/ThemeContext.js';
+import { useCart } from '../contexts/CartContext.js';
 
 const Header = () => {
   const isOnline = useOnlineStatus();
   const [showBackOnline, setShowBackOnline] = useState(false);
   const hasBeenOffline = useRef(false);
   const { theme, toggleTheme } = useTheme();
+  const { totalItems } = useCart();
 
   useEffect(() => {
     let timeout;
@@ -76,8 +78,13 @@ const Header = () => {
                 <Link to='/contact'>Contact</Link>
               </li>
               <li>
-                <Link to='/cart' className='flex items-center gap-1'>
+                <Link to='/cart' className='flex items-center gap-1 relative'>
                   Cart <img src={cartI} height={20} width={20} alt='cart' />
+                  {totalItems > 0 && (
+                    <span className='badge badge-sm badge-primary badge-outline absolute -top-2 -right-2'>
+                      {totalItems}
+                    </span>
+                  )}
                 </Link>
               </li>
             </ul>
