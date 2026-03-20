@@ -81,7 +81,7 @@ const Header = () => {
                 <Link to='/cart' className='flex items-center gap-1 relative'>
                   Cart <img src={cartI} height={20} width={20} alt='cart' />
                   {totalItems > 0 && (
-                    <span className='badge badge-sm badge-primary badge-outline absolute -top-2 -right-2'>
+                    <span className='badge badge-sm badge-primary bg-red-600 text-white absolute -top-2 -right-2'>
                       {totalItems}
                     </span>
                   )}
