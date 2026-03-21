@@ -82,12 +82,16 @@ import {Component} from "path";
 # Setting up Testing in our app
 
 - Install React Testing Library
-- Installed jest
-- Installed Babel dependencies
-- Configure Babel
+- Installed jest - RTL build on top of DOMTL and uses JEST for writing test cases
+- Installed Babel dependencies - helps in transpilation
+- Configure Babel - custom
 - Configure Parcel Config file to disable default babel transpilation
-- Jest - npx jest --init
-- Install jsdom library
+
+Jest version > 28
+
+- Jest - npm init jest@latest - initialise jest in project
+- Install jsdom library - npm install --save-dev jest-environment-jsdom - give browser like environment
+
 - Install @babel/preset-react - to make JSX work in test cases
 - Include @babel/preset-react inside my babel config
-- npm i -D @testing-library/jest-dom
+- npm i -D @testing-library/jest-dom - some important methods,which check availablity of tag inside html, plus other cool features
