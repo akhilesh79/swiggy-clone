@@ -5,25 +5,29 @@ const RestaurantCard = ({ restaurant }) => {
   const imageUrl = `${CDN_RESTAURANT}/${info.cloudinaryImageId}`;
 
   return (
-    <div className='card w-56 bg-base-100 border border-transparent hover:border-base-content/20 transition-all duration-300 cursor-pointer'>
-      <figure className='relative h-32'>
-        <img src={imageUrl} alt={info.name} className='object-cover w-full h-full rounded-t-lg' />
+    <div className='card w-full bg-base-100 border border-transparent hover:border-base-content/20 hover:shadow-md transition-all duration-200 cursor-pointer group'>
+      <figure className='relative h-36 sm:h-40 overflow-hidden'>
+        <img
+          src={imageUrl}
+          alt={info.name}
+          className='object-cover w-full h-full rounded-t-2xl group-hover:scale-105 transition-transform duration-300'
+        />
         {info.aggregatedDiscountInfoV3 && (
-          <div className='absolute top-2 left-2 bg-success text-success-content px-2 py-1 rounded text-xs font-semibold'>
+          <div className='absolute bottom-2 left-2 bg-base-content text-base-100 px-2 py-0.5 rounded text-xs font-bold tracking-wide'>
             {info.aggregatedDiscountInfoV3.header}
           </div>
         )}
       </figure>
-      <div className='card-body p-2'>
-        <h2 className='card-title text-lg font-semibold truncate mb-1 text-base-content'>{info.name}</h2>
-        <p className='text-sm text-base-content/60 truncate mb-2'>{info.cuisines.join(', ')}</p>
-        <div className='flex justify-between items-center mb-1'>
-          <span className='text-sm font-medium flex items-center gap-1 text-base-content'>
+      <div className='card-body p-2.5 gap-1'>
+        <h2 className='font-semibold text-sm sm:text-base leading-tight line-clamp-1 text-base-content'>{info.name}</h2>
+        <p className='text-xs text-base-content/50 line-clamp-1'>{info.cuisines.join(', ')}</p>
+        <div className='flex items-center justify-between mt-0.5'>
+          <span className='text-xs font-medium flex items-center gap-0.5 text-base-content'>
             <span className='text-warning'>⭐</span> {info.avgRating}
           </span>
-          <span className='text-sm text-base-content/50'>{info.costForTwo}</span>
+          <span className='text-xs text-base-content/40'>{info.sla.deliveryTime} min</span>
         </div>
-        <p className='text-xs text-base-content/50'>{info.sla.deliveryTime} mins</p>
+        <p className='text-xs text-base-content/40'>{info.costForTwo}</p>
       </div>
     </div>
   );

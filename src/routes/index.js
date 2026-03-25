@@ -5,6 +5,9 @@ import RestaurantMenu from '../components/RestaurantMenu';
 import About from '../components/About';
 import ContactUs from '../components/ContactUs';
 import Cart from '../components/Cart';
+import Login from '../components/Login';
+import Profile from '../components/Profile';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -29,6 +32,14 @@ const router = createBrowserRouter([
       {
         path: '/cart',
         element: <Cart />,
+      },
+      {
+        path: '/login',
+        element: <Login />,
+      },
+      {
+        path: '/profile',
+        element: <Profile />,
       },
     ],
   },
