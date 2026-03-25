@@ -1,39 +1,146 @@
-import React from 'react';
-
 const Footer = () => {
   return (
-    <footer className='footer sm:footer-horizontal bg-base-200 dark:bg-base-900 text-base-content dark:text-base-content items-center p-4 mt-auto w-full'>
-      <aside className='grid-flow-col items-center'>
-        <svg
-          width='36'
-          height='36'
-          viewBox='0 0 24 24'
-          xmlns='http://www.w3.org/2000/svg'
-          fillRule='evenodd'
-          clipRule='evenodd'
-          className='fill-current'
-        >
-          <path d='M22.672 15.226l-2.432.811.841 2.515c.33 1.019-.209 2.127-1.23 2.456-1.15.325-2.148-.321-2.463-1.226l-.84-2.518-5.013 1.677.84 2.517c.391 1.203-.434 2.542-1.831 2.542-.88 0-1.601-.564-1.86-1.314l-.842-2.516-2.431.809c-1.135.328-2.145-.317-2.463-1.229-.329-1.018.211-2.127 1.231-2.456l2.432-.809-1.621-4.823-2.432.808c-1.355.384-2.558-.59-2.558-1.839 0-.817.509-1.582 1.327-1.846l2.433-.809-.842-2.515c-.33-1.02.211-2.129 1.232-2.458 1.02-.329 2.13.209 2.461 1.229l.842 2.515 5.011-1.677-.839-2.517c-.403-1.238.484-2.553 1.843-2.553.819 0 1.585.509 1.85 1.326l.841 2.517 2.431-.81c1.02-.33 2.131.211 2.461 1.229.332 1.018-.21 2.126-1.23 2.456l-2.433.809 1.622 4.823 2.433-.809c1.242-.401 2.557.484 2.557 1.838 0 .819-.51 1.583-1.328 1.847m-8.992-6.428l-5.01 1.675 1.619 4.828 5.011-1.674-1.62-4.829z'></path>
-        </svg>
-        <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
-      </aside>
-      <nav className='grid-flow-col gap-4 md:place-self-center md:justify-self-end'>
-        <a>
-          <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' className='fill-current'>
-            <path d='M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z'></path>
-          </svg>
-        </a>
-        <a>
-          <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' className='fill-current'>
-            <path d='M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z'></path>
-          </svg>
-        </a>
-        <a>
-          <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' className='fill-current'>
-            <path d='M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z'></path>
-          </svg>
-        </a>
-      </nav>
+    <footer className='bg-base-200 border-t border-base-300'>
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 py-10'>
+        <div className='grid grid-cols-2 sm:grid-cols-4 gap-8'>
+          {/* Brand */}
+          <div className='col-span-2 sm:col-span-1'>
+            <div className='flex items-center gap-2 mb-3'>
+              <span className='text-2xl'>🍱</span>
+              <span className='font-bold text-lg text-base-content'>Namaste Food</span>
+            </div>
+            <p className='text-sm text-base-content/60 leading-relaxed'>
+              Connecting you with the best local restaurants. Fresh, fast, and delicious — delivered to your door.
+            </p>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h3 className='font-semibold text-base-content mb-3 text-sm uppercase tracking-wide'>Company</h3>
+            <ul className='space-y-2 text-sm text-base-content/60'>
+              <li>
+                <a href='/about' className='hover:text-orange-500 transition-colors'>
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href='/contact' className='hover:text-orange-500 transition-colors'>
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a href='#' className='hover:text-orange-500 transition-colors'>
+                  Careers
+                </a>
+              </li>
+              <li>
+                <a href='#' className='hover:text-orange-500 transition-colors'>
+                  Blog
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <h3 className='font-semibold text-base-content mb-3 text-sm uppercase tracking-wide'>Legal</h3>
+            <ul className='space-y-2 text-sm text-base-content/60'>
+              <li>
+                <a href='#' className='hover:text-orange-500 transition-colors'>
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href='#' className='hover:text-orange-500 transition-colors'>
+                  Terms of Service
+                </a>
+              </li>
+              <li>
+                <a href='#' className='hover:text-orange-500 transition-colors'>
+                  Cookie Policy
+                </a>
+              </li>
+              <li>
+                <a href='#' className='hover:text-orange-500 transition-colors'>
+                  Refund Policy
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Social */}
+          <div>
+            <h3 className='font-semibold text-base-content mb-3 text-sm uppercase tracking-wide'>Follow Us</h3>
+            <div className='flex flex-wrap gap-2'>
+              {[
+                {
+                  label: 'GitHub',
+                  href: 'https://github.com/akhilesh79',
+                  icon: (
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='18'
+                      height='18'
+                      viewBox='0 0 24 24'
+                      className='fill-current'
+                    >
+                      <path d='M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12' />
+                    </svg>
+                  ),
+                },
+                {
+                  label: 'Twitter',
+                  href: '#',
+                  icon: (
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='18'
+                      height='18'
+                      viewBox='0 0 24 24'
+                      className='fill-current'
+                    >
+                      <path d='M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z' />
+                    </svg>
+                  ),
+                },
+                {
+                  label: 'LinkedIn',
+                  href: '#',
+                  icon: (
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='18'
+                      height='18'
+                      viewBox='0 0 24 24'
+                      className='fill-current'
+                    >
+                      <path d='M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' />
+                    </svg>
+                  ),
+                },
+              ].map(({ label, href, icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  aria-label={label}
+                  className='btn btn-sm btn-ghost btn-square text-base-content/60 hover:text-orange-500'
+                >
+                  {icon}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className='divider my-6' />
+
+        <div className='flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-base-content/50'>
+          <p>© {new Date().getFullYear()} Namaste Food. All rights reserved.</p>
+          <p>Built with ❤️ using React &amp; Tailwind CSS</p>
+        </div>
+      </div>
     </footer>
   );
 };

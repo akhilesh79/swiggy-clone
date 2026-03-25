@@ -16,6 +16,7 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "babel-jest": "^30.3.0",
+    "buffer": "^6.0.3",
     "jest": "^30.3.0",
     "jest-environment-jsdom": "^30.3.0",
     "parcel": "^2.16.4"
@@ -23,11 +24,16 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",
     "@tailwindcss/postcss": "^4.2.1",
+    "axios": "^1.13.6",
     "daisyui": "^5.5.19",
+    "formik": "^2.4.9",
+    "lucide-react": "^1.6.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-redux": "^9.2.0",
     "react-router-dom": "^6.11.2npm ",
-    "tailwindcss": "^4.2.1"
+    "react-toastify": "^11.0.5",
+    "tailwindcss": "^4.2.1",
+    "yup": "^1.7.1"
   }
 }

@@ -1,9 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { cartI, foodI } from '../assets/index.js';
+import { Link, useNavigate } from 'react-router-dom';
+import { foodI } from '../assets/index.js';
 import useOnlineStatus from '../hooks/useOnlineStatus.js';
 import { useTheme } from '../contexts/ThemeContext.js';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { clearUser } from '../store/slices/userSlice/index.js';
+import { API_BASE_URL } from '../constants/common.js';
+import { ShoppingBasket } from 'lucide-react';
 
 const Header = () => {
   const isOnline = useOnlineStatus();
@@ -11,6 +16,22 @@ const Header = () => {
   const hasBeenOffline = useRef(false);
   const { theme, toggleTheme } = useTheme();
   const { totalItems } = useSelector((store) => store.cart);
+  const user = useSelector((store) => store.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      const res = await axios.post(API_BASE_URL + '/auth/logout', {}, { withCredentials: true });
+      dispatch(clearUser());
+      navigate('/');
+      toast.success(res.data?.message || 'Logged out successfully!');
+    } catch {
+      dispatch(clearUser());
+      navigate('/');
+      toast.info('Logged out.');
+    }
+  };
 
   useEffect(() => {
     let timeout;
@@ -79,7 +100,7 @@ const Header = () => {
               </li>
               <li>
                 <Link to='/cart' className='flex items-center gap-1 relative'>
-                  Cart <img src={cartI} height={20} width={20} alt='cart' />
+                  Cart <ShoppingBasket size={20} />
                   {totalItems > 0 && (
                     <span className='badge badge-sm badge-primary bg-red-600 text-white absolute -top-2 -right-2'>
                       {totalItems}
@@ -89,33 +110,52 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <div className='dropdown dropdown-end'>
-            <div tabIndex={0} role='button' className='btn btn-ghost btn-circle avatar'>
-              <div className='w-10 rounded-full'>
-                <img
-                  alt='Tailwind CSS Navbar component'
-                  src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
-                />
+          {user ? (
+            <div className='dropdown dropdown-end'>
+              <div tabIndex={0} role='button' className='btn btn-ghost btn-circle avatar'>
+                <div className='w-10 rounded-full'>
+                  <img
+                    alt={user.firstName}
+                    src={
+                      user.profileImage || 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
+                    }
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp';
+                    }}
+                  />
+                </div>
               </div>
+              <ul
+                tabIndex='-1'
+                className='menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-56 p-2 shadow'
+              >
+                <li className='menu-title px-2 py-1'>
+                  <span className='font-semibold text-base-content'>
+                    {user.firstName} {user.lastName}
+                  </span>
+                  <span className='text-xs text-base-content/50 font-normal'>{user.emailId}</span>
+                </li>
+                <div className='divider my-0.5' />
+                <li>
+                  <Link to='/profile' className='justify-between'>
+                    My Profile
+                    <span className='badge badge-sm bg-orange-500 text-white border-none'>Edit</span>
+                  </Link>
+                </li>
+                <div className='divider my-0.5' />
+                <li>
+                  <button onClick={handleLogout} className='text-error hover:bg-error/10'>
+                    Logout
+                  </button>
+                </li>
+              </ul>
             </div>
-            <ul
-              tabIndex='-1'
-              className='menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow'
-            >
-              <li>
-                <a className='justify-between'>
-                  Profile
-                  <span className='badge'>New</span>
-                </a>
-              </li>
-              <li>
-                <a>Settings</a>
-              </li>
-              <li>
-                <a>Logout</a>
-              </li>
-            </ul>
-          </div>
+          ) : (
+            <Link to='/login' className='btn btn-sm bg-orange-500 hover:bg-orange-600 text-white border-none'>
+              Sign In
+            </Link>
+          )}
         </div>
       </div>
     </div>

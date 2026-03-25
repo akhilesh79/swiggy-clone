@@ -8,87 +8,75 @@ class ContactUs extends Component {
       email: '',
       subject: '',
       message: '',
+      submitted: false,
     };
   }
 
   handleInputChange = (e) => {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value, submitted: false });
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', this.state);
-    alert('Thank you for your message! We will get back to you soon.');
-    this.setState({ name: '', email: '', subject: '', message: '' });
+    this.setState({ submitted: true, name: '', email: '', subject: '', message: '' });
   };
 
   render() {
-    const { name, email, subject, message } = this.state;
+    const { name, email, subject, message, submitted } = this.state;
 
     return (
-      <div className='bg-base-200 flex items-center justify-center p-6'>
-        <div className='w-full mx-auto bg-base-100 shadow-sm rounded-none border border-base-300'>
-          <div className='md:flex'>
-            {/* Left side - Contact Info */}
-            <div className='md:w-1/2 bg-base-content p-8 flex items-center justify-center'>
-              <div className='text-center w-full text-base-100'>
+      <div className='min-h-full bg-base-200 py-8 px-4 sm:px-6 lg:px-8'>
+        <div className='max-w-5xl mx-auto'>
+          <div className='card bg-base-100 shadow-xl border border-base-300 overflow-hidden'>
+            <div className='flex flex-col lg:flex-row'>
+              {/* Left — contact info panel */}
+              <div className='lg:w-2/5 bg-linear-to-br from-orange-500 to-rose-600 p-8 flex flex-col items-center justify-center text-white'>
                 <img
                   src='https://avatars.githubusercontent.com/u/128993309?v=4'
                   alt='akhilesh79 avatar'
-                  className='w-32 h-32 mx-auto rounded-full object-cover border-4 border-base-300 shadow-lg mb-6'
+                  className='w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-full object-cover border-4 border-white/30 shadow-xl mb-5'
                 />
-                <h2 className='text-3xl font-bold mb-2'>Akhilesh Kumar Mishra</h2>
-                <p className='text-lg mb-8 text-base-200'>Professional Inquiries</p>
+                <h2 className='text-2xl sm:text-3xl font-bold text-center mb-1'>Akhilesh Kumar Mishra</h2>
+                <p className='text-white/80 text-sm mb-8 text-center'>Professional Inquiries</p>
 
-                <div className='space-y-6 text-left max-w-sm mx-auto'>
-                  <div className='flex items-center space-x-4'>
-                    <div className='w-12 h-12 bg-base-100/20 rounded-full flex items-center justify-center'>
-                      <span className='text-xl'>📧</span>
+                <div className='space-y-5 w-full max-w-xs'>
+                  {[
+                    { icon: '📧', label: 'Email', value: 'makmishra.99@gmail.com' },
+                    { icon: '📱', label: 'Phone', value: '+91 8765120746' },
+                    { icon: '💼', label: 'Availability', value: 'Open for projects' },
+                  ].map(({ icon, label, value }) => (
+                    <div key={label} className='flex items-center gap-4'>
+                      <div className='w-11 h-11 bg-white/15 rounded-full flex items-center justify-center shrink-0'>
+                        <span className='text-xl'>{icon}</span>
+                      </div>
+                      <div>
+                        <p className='font-semibold text-sm'>{label}</p>
+                        <p className='text-white/70 text-sm'>{value}</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className='font-semibold'>Email</p>
-                      <p className='text-base-200'>makmishra.99@gmail.com</p>
-                    </div>
-                  </div>
-
-                  <div className='flex items-center space-x-4'>
-                    <div className='w-12 h-12 bg-base-100/10 rounded-full flex items-center justify-center'>
-                      <span className='text-xl'>📱</span>
-                    </div>
-                    <div>
-                      <p className='font-semibold'>Phone</p>
-                      <p className='text-base-200'>+91 8765120746</p>
-                    </div>
-                  </div>
-
-                  <div className='flex items-center space-x-4'>
-                    <div className='w-12 h-12 bg-base-100/20 rounded-full flex items-center justify-center'>
-                      <span className='text-xl'>💼</span>
-                    </div>
-                    <div>
-                      <p className='font-semibold'>Availability</p>
-                      <p className='text-base-200'>Open for projects</p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
-            </div>
 
-            {/* Right side - Contact Form */}
-            <div className='md:w-1/2 p-8 flex items-center justify-center'>
-              <div className='w-full max-w-lg'>
-                <h1 className='text-3xl md:text-4xl font-bold text-base-content mb-2'>Contact Us</h1>
-                <p className='text-base-content/60 mb-8'>
-                  We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+              {/* Right — contact form */}
+              <div className='lg:w-3/5 p-6 sm:p-8'>
+                <h1 className='text-3xl sm:text-4xl font-bold text-base-content mb-1'>Contact Us</h1>
+                <p className='text-base-content/60 mb-6 text-sm'>
+                  We’d love to hear from you. Send us a message and we’ll respond as soon as possible.
                 </p>
 
-                <form onSubmit={this.handleSubmit} className='space-y-6'>
-                  <div className='grid md:grid-cols-2 gap-6'>
-                    <div>
-                      <label htmlFor='name' className='block text-sm font-medium text-base-content mb-2'>
-                        Full Name
+                {submitted && (
+                  <div className='alert alert-success mb-6'>
+                    <span>✓ Message sent! We’ll get back to you within 24 hours.</span>
+                  </div>
+                )}
+
+                <form onSubmit={this.handleSubmit} className='space-y-4'>
+                  <div className='grid sm:grid-cols-2 gap-4'>
+                    <div className='form-control'>
+                      <label className='label py-1'>
+                        <span className='label-text font-medium'>Full Name</span>
                       </label>
                       <input
                         type='text'
@@ -97,13 +85,13 @@ class ContactUs extends Component {
                         value={name}
                         onChange={this.handleInputChange}
                         required
-                        className='w-full px-4 py-3 border border-base-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors bg-base-100 text-base-content'
-                        placeholder='Your name'
+                        className='input input-bordered w-full'
+                        placeholder='John Doe'
                       />
                     </div>
-                    <div>
-                      <label htmlFor='email' className='block text-sm font-medium text-base-content mb-2'>
-                        Email Address
+                    <div className='form-control'>
+                      <label className='label py-1'>
+                        <span className='label-text font-medium'>Email</span>
                       </label>
                       <input
                         type='email'
@@ -112,15 +100,15 @@ class ContactUs extends Component {
                         value={email}
                         onChange={this.handleInputChange}
                         required
-                        className='w-full px-4 py-3 border border-base-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors bg-base-100 text-base-content'
-                        placeholder='your@email.com'
+                        className='input input-bordered w-full'
+                        placeholder='john@example.com'
                       />
                     </div>
                   </div>
 
-                  <div>
-                    <label htmlFor='subject' className='block text-sm font-medium text-base-content mb-2'>
-                      Subject
+                  <div className='form-control'>
+                    <label className='label py-1'>
+                      <span className='label-text font-medium'>Subject</span>
                     </label>
                     <input
                       type='text'
@@ -129,14 +117,14 @@ class ContactUs extends Component {
                       value={subject}
                       onChange={this.handleInputChange}
                       required
-                      className='w-full px-4 py-3 border border-base-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors bg-base-100 text-base-content'
+                      className='input input-bordered w-full'
                       placeholder='How can we help?'
                     />
                   </div>
 
-                  <div>
-                    <label htmlFor='message' className='block text-sm font-medium text-base-content mb-2'>
-                      Message
+                  <div className='form-control'>
+                    <label className='label py-1'>
+                      <span className='label-text font-medium'>Message</span>
                     </label>
                     <textarea
                       id='message'
@@ -144,23 +132,21 @@ class ContactUs extends Component {
                       value={message}
                       onChange={this.handleInputChange}
                       required
-                      rows={6}
-                      className='w-full px-4 py-3 border border-base-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors resize-none bg-base-100 text-base-content'
+                      rows={5}
+                      className='textarea textarea-bordered w-full resize-none'
                       placeholder='Tell us more about your project or inquiry...'
                     />
                   </div>
 
                   <button
                     type='submit'
-                    className='w-full bg-base-content text-base-100 py-3 px-6 rounded-lg font-semibold hover:bg-base-content/80 transition-all duration-300 transform hover:scale-[1.01] shadow-lg'
+                    className='btn w-full sm:w-auto px-8 bg-orange-500 hover:bg-orange-600 text-white border-none'
                   >
                     Send Message
                   </button>
                 </form>
 
-                <div className='mt-8 text-center'>
-                  <p className='text-sm text-base-content/50'>We typically respond within 24 hours</p>
-                </div>
+                <p className='mt-6 text-xs text-base-content/40'>We typically respond within 24 hours.</p>
               </div>
             </div>
           </div>

@@ -131,15 +131,36 @@ const Cart = () => {
               <button className='btn btn-primary w-full mb-3'>Proceed to Checkout</button>
 
               <button
-                onClick={() => {
-                  if (window.confirm('Are you sure you want to clear the cart?')) {
-                    dispatch(clearCart());
-                  }
-                }}
-                className='btn btn-ghost btn-sm w-full'
+                onClick={() => document.getElementById('clear-cart-modal').showModal()}
+                className='btn btn-ghost btn-sm w-full text-error'
               >
                 Clear Cart
               </button>
+
+              {/* Confirm modal */}
+              <dialog id='clear-cart-modal' className='modal'>
+                <div className='modal-box'>
+                  <h3 className='font-bold text-lg'>Clear cart?</h3>
+                  <p className='py-3 text-base-content/70'>All items will be removed from your cart.</p>
+                  <div className='modal-action'>
+                    <form method='dialog'>
+                      <button className='btn btn-ghost mr-2'>Cancel</button>
+                    </form>
+                    <button
+                      className='btn btn-error'
+                      onClick={() => {
+                        dispatch(clearCart());
+                        document.getElementById('clear-cart-modal').close();
+                      }}
+                    >
+                      Clear
+                    </button>
+                  </div>
+                </div>
+                <form method='dialog' className='modal-backdrop'>
+                  <button>close</button>
+                </form>
+              </dialog>
 
               <Link to='/' className='btn btn-outline btn-sm w-full mt-3'>
                 Continue Shopping
