@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { searchIcon } from '../assets/index.js';
 import useUserLocation from '../hooks/useUserLocation.js';
+import { SearchIcon } from 'lucide-react';
 
 const SearchBar = ({ setFilteredRestaurants, restaurants }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -30,7 +30,7 @@ const SearchBar = ({ setFilteredRestaurants, restaurants }) => {
     <div className='flex flex-col sm:flex-row items-stretch sm:items-center gap-2 py-2'>
       {/* Search input */}
       <div className='flex flex-1 items-center gap-2 border-2 border-orange-400 focus-within:border-orange-500 rounded-xl px-3 py-1.5 bg-base-100 transition-colors'>
-        <img src={searchIcon} height={18} width={18} alt='Search' className='opacity-50 shrink-0' />
+        <SearchIcon className='w-4 h-4 text-orange-500 shrink-0' />
         <input
           type='text'
           placeholder='Search for restaurants or cuisines...'
